@@ -7,6 +7,9 @@ export default function Home() {
       <p style={{ fontSize: '1.2rem', color: '#2d3748', marginTop: '1rem' }}>
         Registro de consultas e historias clínicas - Sistema Educa360.
       </p>
+      <p style={{ fontSize: '1.2rem', color: '#8a8b48', marginTop: '1rem' }}>
+        Prueba pull request
+      </p>
     </main>
   );
 }
