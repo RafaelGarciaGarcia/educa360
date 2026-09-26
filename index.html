@@ -1,19 +1,30 @@
 <!DOCTYPE html>
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getFirestore, connectFirestoreEmulator } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Educa360 Dev</title>
+</head>
+<body>
+  <h1>Educa360 - Entorno de Desarrollo</h1>
 
-  // 1. Lee la configuración desde las variables de entorno de Vite
-  const firebaseConfig = {
-    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID
-  };
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, connectFirestoreEmulator } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+    // 1. Lee el Project ID desde variables de entorno
+    const firebaseConfig = {
+      projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID
+    };
 
-  // 2. Conecta al emulador solo si VITE_USE_EMULATOR es "true"
-  if (import.meta.env.VITE_USE_EMULATOR === 'true') {
-    const port = Number(import.meta.env.VITE_FIREBASE_EMULATOR_PORT) || 8080;
-    connectFirestoreEmulator(db, '127.0.0.1', port);
-  }
-</script>
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // 2. Conecta al emulador solo si VITE_USE_EMULATOR es "true"
+    if (import.meta.env.VITE_USE_EMULATOR === 'true') {
+      const port = Number(import.meta.env.VITE_FIREBASE_EMULATOR_PORT) || 8080;
+      connectFirestoreEmulator(db, '127.0.0.1', port);
+      console.log(`✅ Emulador activo en el puerto local ${port} para el proyecto ${import.meta.env.VITE_FIREBASE_PROJECT_ID}`);
+    }
+  </script>
+</body>
+</html>
